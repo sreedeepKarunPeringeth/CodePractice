@@ -4,6 +4,10 @@ public class InterfaceDemo2 implements MyInterface{
 
 	int value;
 	
+	public InterfaceDemo2() {
+		super();
+	}
+
 	public InterfaceDemo2(int value){
 		value = value;
 	}

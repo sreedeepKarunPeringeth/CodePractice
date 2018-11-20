@@ -23,7 +23,7 @@ public class ThreadExecutionPreventionDemo {
 	public static void main(String[] args) throws InterruptedException{
 		MyThread t = new MyThread();
 		MyThread.mainThread  = Thread.currentThread();
-		
+		t.wait();
 		t.start();
 		t.join(5000);
 		Thread.sleep(2000);

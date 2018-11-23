@@ -34,7 +34,7 @@ class Processor extends Thread{
 }
 
 
-public class MultiThreadingDemo {
+public class MultiThreadingDemo1 {
 
 	public static void main(String[] args){
 		

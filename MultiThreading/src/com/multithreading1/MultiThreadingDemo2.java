@@ -16,6 +16,14 @@ public class MultiThreadingDemo2 {
 		finally{
 			System.out.println("in finally block");
 		}
+		
+		System.out.println("after");
+		
+		int x= 9;
+		if( x == 9){
+			x= 8;
+		}
+		
 	}
 	
 }

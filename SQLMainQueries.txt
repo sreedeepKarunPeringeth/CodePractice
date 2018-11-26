@@ -263,6 +263,11 @@
 			ALTER TABLE EMPLOYEE add CONSTRAINT EMPLOYEE_PK PRIMARY KEY(EMPLOYEE_ID)
 			
 			
-		
+48. Copy one table into another.
+
+			SELECT * INTO EMPLOYEEBACKUPNOV26 FROM EMPLOYEE;
+			SELECT * INTO EMPLOYEEBACKUPNOV26 FROM EMPLOYEE where 1= 0;  // this will create new table with other table's schema
+			
+
 
 		

@@ -3,6 +3,10 @@ package com.coreJava;
 
 class Parent {
 	
+	public static void onlyMine(){
+		System.out.println("in parent static method: onlyMine()");
+	}
+	
 	private String parentName;
 	
 	public void method1(){
@@ -33,7 +37,7 @@ class Parent {
 	}
 }
 
-class Child extends Parent{
+ class Child extends Parent{
 	
 	private String childName;
 	
@@ -57,9 +61,18 @@ class Child extends Parent{
 	}*/
 }
 
+
+class nextChild extends Child{
+	
+}
+
 public class CoreJavaConcepts {
 
 	public static void main(String[] args) {
+		
+		nextChild nc = new nextChild();
+		
+		nc.onlyMine();
 		
 		Parent p = new Child();
 		//Child c = (Child) new Parent();

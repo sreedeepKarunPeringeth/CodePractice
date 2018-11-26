@@ -1,0 +1,268 @@
+
+===================== CREATING TABLE AND INSERTING DATA ================================
+
+1. CREATE TABLE EMPLOYEE(Employee_id int Primary Key, First_name varchar2 , Last_name varchar2, Salary long , Joining_date date, Department varchar2 );
+
+
+2. CREATE TABLE INCENTIVES(Employee_ref_id int , Incentive_date date, Incentive_amount long);
+
+3. INSERT INTO EMPLOYEE VALUES (1,'John','Abraham',1000000,'01-JAN-13 12.00.00 AM','Banking');
+
+4. INSERT INTO EMPLOYEE(Employee_id,First_name, Last_name, Salary, Joining_date, Department) VALUES     		   	(2,'Michael','Clarke',800000,'01-JAN-13 12.00.00 AM','Insurance');
+
+5. INSERT INTO INCENTIVES VALUES (1,'01-FEB-13',3000);
+
+
+================== QUERIES ==================================================
+
+1. Get all employee details from the employee table
+		
+		SELECT * FROM EMPLOYEE ;
+		
+2. Get First_Name,Last_Name from employee table
+	
+		SELECT FIRST_NAME, last_Name FROM EMPLOYEE ;
+		
+3. Get First_Name from employee table using alias name “Employee Name”
+
+		SELECT First_name as "Employee Name" FROM EMPLOYEE ;
+		SELECT First_name  "Employee Name" FROM EMPLOYEE ;
+		
+4. Get First_Name from employee table in upper case
+
+		SELECT upper(First_name)  FROM EMPLOYEE ;
+		
+5. Get First_Name from employee table in lower case
+
+		SELECT lower(First_name)  FROM EMPLOYEE ;
+		
+6. Get unique DEPARTMENT from employee table
+	
+		SELECT distinct Department  FROM EMPLOYEE ;
+		
+7. Select first 3 characters of FIRST_NAME from EMPLOYEE 
+ 
+		SELECT substr(first_name,1,3)  FROM EMPLOYEE ;
+		
+		NOTE: 
+			Oracle Equivalent of SQL Server SUBSTRING is SUBSTR, Query : select substr(FIRST_NAME,0,3) from employee
+
+			SQL Server Equivalent of Oracle SUBSTR is SUBSTRING, Query : select substring(FIRST_NAME,1,3) from employee
+			
+			
+8.  Get position of 'o' in name 'John' from employee table
+
+		
+		-------------
+		
+9. Get FIRST_NAME from employee table after removing white spaces from right side
+
+		SELECT rtrim(first_name)  FROM EMPLOYEE ;
+		
+10.  Get FIRST_NAME from employee table after removing white spaces from left side
+
+		SELECT ltrim(first_name)  FROM EMPLOYEE ;
+		
+11. Get length of FIRST_NAME from employee table
+
+		SELECT length(first_name)  FROM EMPLOYEE ;
+		
+		NOTE:
+			  Oracle,MYSQL Equivalent of SQL Server Len is Length , Query :select length(FIRST_NAME) from employee
+
+			  SQL Server Equivalent of Oracle,MYSQL Length is Len, Query :select len(FIRST_NAME) from employee
+			  
+12. Get First_Name from employee table after replacing 'o' with '$'
+
+		SELECT replace(first_name,'o','$')  FROM EMPLOYEE ;
+		
+13. Get First_Name and Last_Name as single column from employee table separated by a '_'
+
+		SELECT FIRST_NAME||'-'||LAST_NAME  FROM EMPLOYEE ;
+		
+		NOTE:
+			   Oracle Equivalent of MySQL concat is '||', Query : Select FIRST_NAME|| '_' ||LAST_NAME from EMPLOYEE
+
+			   SQL Server Equivalent of MySQL concat is '+', Query : Select FIRST_NAME + '_' +LAST_NAME from EMPLOYEE
+
+			   MySQL Equivalent of Oracle '||' is concat, Query : Select concat(FIRST_NAME,'_',LAST_NAME) from EMPLOYEE
+			   
+14. Get FIRST_NAME ,Joining year,Joining Month and Joining Date from employee table
+		
+		--------------
+		
+		NOTE:
+				SQL Queries in Oracle, Select FIRST_NAME, to_char(joining_date,'YYYY') JoinYear , to_char(joining_date,'Mon'), to_char(joining_date,'dd') from EMPLOYEE
+
+				SQL Queries in SQL Server, select SUBSTRING (convert(varchar,joining_date,103),7,4) , SUBSTRING (convert(varchar,joining_date,100),1,3) , SUBSTRING (convert(varchar,joining_date,100),5,2) from EMPLOYEE
+
+				SQL Queries in MySQL, select year(joining_date),month(joining_date), DAY(joining_date) from EMPLOYEE
+				
+				
+15. Get all employee details from the employee table order by First_Name Ascending
+
+		select * from  EMPLOYEE ORDER BY first_name ASC;
+		
+16. Get all employee details from the employee table order by First_Name descending
+
+		select * from  EMPLOYEE ORDER BY first_name desc;
+		
+17. Get all employee details from the employee table order by First_Name Ascending and Salary descending
+
+		select * from  EMPLOYEE ORDER BY first_name asc,Salary desc;
+		
+18. Get employee details from employee table whose employee name is “John”
+
+		select * from  EMPLOYEE where first_name = 'John';
+		
+19. Get employee details from employee table whose employee name are “John” and “Roy”
+
+		select * from  EMPLOYEE where first_name in ('John','Roy');
+		
+20. Get employee details from employee table whose employee name are not “John” and “Roy”
+
+		select * from  EMPLOYEE where first_name not in ('John','Roy');
+		
+21. Get employee details from employee table whose first name starts with 'J'
+
+		select * from  EMPLOYEE where first_name like 'J%';
+		
+22. Get employee details from employee table whose first name contains 'o'
+
+		select * from  EMPLOYEE where first_name like '%o%';
+		
+23. Get employee details from employee table whose first name ends with 'n'
+
+		select * from  EMPLOYEE where first_name like '%n';
+		
+24. Get employee details from employee table whose first name ends with 'n' and name contains 4 letters
+
+		select * from  EMPLOYEE where first_name like '___n';
+		
+25. Get employee details from employee table whose first name starts with 'J' and name contains 4 letters
+
+		select * from  EMPLOYEE where first_name like 'J____';
+		
+26. Get employee details from employee table whose Salary greater than 600000
+
+		select * from  EMPLOYEE where Salary > 60000;
+		
+27. Get employee details from employee table whose Salary less than 800000
+
+		select * from  EMPLOYEE where Salary < 800000;
+		
+28. Get employee details from employee table whose Salary between 500000 and 800000
+
+		select * from  EMPLOYEE where Salary < 800000 and Salary > 500000;
+		select * from  EMPLOYEE where Salary between 500000 and 800000;
+		
+		NOTE:
+		
+			select * from  EMPLOYEE where Salary between 800000 and 500000; ----- No result. order is important
+			
+29. Get employee details from employee table whose joining year is “2013”
+
+		--------------
+		
+		NOTE:
+		
+			SQL Queries in Oracle, Select * from EMPLOYEE where to_char(joining_date,'YYYY')='2013'
+
+			SQL Queries in SQL Server, Select * from EMPLOYEE where SUBSTRING(convert(varchar,joining_date,103),7,4)='2013'
+
+			SQL Queries in MySQL, Select * from EMPLOYEE where year(joining_date)='2013'
+			
+30. Get employee details from employee table who joined after January 31st
+
+		----------------
+		
+		NOTE:
+		
+			SQL Queries in Oracle, Select * from EMPLOYEE where JOINING_DATE >to_date('31/01/2013','dd/mm/yyyy')
+
+			SQL Queries in SQL Server and MySQL (Format - “MM/DD/YYYY”), Select * from EMPLOYEE where joining_date >'01/31/2013'
+
+			SQL Queries in MySQL (Format - “YYYY-DD-MM”), Select * from EMPLOYEE where joining_date >'2013-01-31'
+			
+			
+31. Get department,total salary with respect to a department from employee table.
+		
+			Select department, sum(Salary) from EMPLOYEE group by Department;
+			
+			
+32.  Get department,total salary with respect to a department from employee table order by total salary descending
+
+			Select department, sum(Salary) as totalSalary from EMPLOYEE group by Department order by totalSalary desc;
+			
+33. Get department,no of employees in a department,total salary with respect to a department from employee table order by total salary descending
+
+			Select department, count(employee_id), sum(Salary) as totalSalary from EMPLOYEE group by Department order by totalSalary desc;
+			
+			
+34. Get department wise average salary from employee table order by salary ascending
+
+			Select department, avg(Salary) as avgSalary from EMPLOYEE group by Department order by avgSalary desc;
+			
+35. Get department wise maximum salary from employee table order by salary ascending
+
+		Select department, max(Salary) as maxSalary from EMPLOYEE group by Department order by maxSalary asc;
+		
+36.  Get department wise minimum salary from employee table order by salary ascending
+
+		Select department, min(Salary) as minSalary from EMPLOYEE group by Department order by minSalary asc;
+		
+37. Select department,total salary with respect to a department from employee table where total salary greater than 800000 order by Total_Salary descending
+
+		Select department, sum(Salary) as totalSalary from EMPLOYEE  group by Department having totalSalary > 800000 order by totalSalary desc ;
+		
+38. Select employee details from employee table if same empl data exists in incentive table ?
+
+		select * from employee where employee_id in (select employee_ref_id from incentives group by employee_ref_id);
+		
+		
+39. Select Last Name from employee table which contain only numbers
+
+		Select * from EMPLOYEE where lower(LAST_NAME)=upper(LAST_NAME);
+		
+		NOTE:
+				Explanation : In order to achieve the desired result, we use "ASCII" property of the database. If we get results for a column using Lower and Upper commands, ASCII of both results will be same for numbers. If there is any alphabets in the column, results will differ.
+				
+		
+40. Select first_name, incentive amount from employee and incentives table for those employees who have incentives
+
+			SELECT FIRST_NAME, INCENTIVE_AMOUNT FROM EMPLOYEE INNER JOIN  INCENTIVES ON EMPLOYEE.Employee_id = INCENTIVES.Employee_ref_id;
+			
+41.  Select first_name, incentive amount from employee and incentives table for all employes even if they didn't get incentives
+
+			SELECT FIRST_NAME, INCENTIVE_AMOUNT FROM EMPLOYEE LEFT JOIN  INCENTIVES ON EMPLOYEE.Employee_id = INCENTIVES.Employee_ref_id;
+			
+42. Select TOP 2 salary from employee table
+
+			SELECT  * FROM EMPLOYEE ORDER BY SALARY DESC LIMIT 2;
+			SELECT  * FROM EMPLOYEE LIMIT 2;
+			
+43. Select 2nd Highest salary from employee table
+
+			SELECT MIN(SALARY) FROM (SELECT * FROM EMPLOYEE ORDER BY SALARY DESC LIMIT 2) ;
+			
+44. Select Nth Highest salary from employee table
+		
+			SELECT MIN(SALARY) FROM (SELECT * FROM EMPLOYEE ORDER BY SALARY DESC LIMIT N) ;
+			
+45.  Select First_Name,LAST_NAME from employee table as separate rows
+
+			select FIRST_NAME from EMPLOYEE union select LAST_NAME from EMPLOYEE;
+			
+			
+46.  Write syntax to delete table employee
+
+			DROP TABLE EMPLOYEE;
+			
+47. Write syntax to set EMPLOYEE_ID as primary key in employee table
+
+			ALTER TABLE EMPLOYEE add CONSTRAINT EMPLOYEE_PK PRIMARY KEY(EMPLOYEE_ID)
+			
+			
+		
+
+		

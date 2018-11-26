@@ -270,4 +270,16 @@
 			
 
 
-		
+49. select employee_id, salary, case when salary > 1000 then "Greater than 1000"
+								when salary = 1000 then "salary is 1000"
+								else "salary is less than 1000"
+								end from employee;
+								
+								
+50. SELECT ProductName FROM Products WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);  --Test it 
+
+52. SELECT ProductName FROM Products WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);   -- Test it
+
+53. SELECT SupplierName FROM Suppliers WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Price < 20); -- Test it
+
+54. select FIRST_NAME from EMPLOYEE union all select LAST_NAME from EMPLOYEE;  -- Test it

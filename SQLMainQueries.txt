@@ -1,4 +1,4 @@
-
+﻿
 ===================== CREATING TABLE AND INSERTING DATA ================================
 
 1. CREATE TABLE EMPLOYEE(Employee_id int Primary Key, First_name varchar2 , Last_name varchar2, Salary long , Joining_date date, Department varchar2 );
@@ -283,3 +283,6 @@
 53. SELECT SupplierName FROM Suppliers WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Price < 20); -- Test it
 
 54. select FIRST_NAME from EMPLOYEE union all select LAST_NAME from EMPLOYEE;  -- Test it
+
+
+------------ practice 50 to 54 ----------------

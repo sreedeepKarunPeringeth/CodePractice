@@ -1,5 +1,7 @@
 package com.coreJava;
 
+import java.util.Iterator;
+import java.util.TreeMap;
 
 class Parent {
 	
@@ -66,28 +68,88 @@ class nextChild extends Child{
 	
 }
 
-public class CoreJavaConcepts {
+interface homeTest{
+	public void homeTestRun();
+}
 
+interface test extends homeTest{
+	
+	public void testRun();
+	default void testDefault() {
+		System.out.println("inside testDefault() ");
+	}
+}
+
+class fibonacci 
+{ 
+    static int fib(int n) 
+    { 
+    if (n <= 1) 
+       return n; 
+    return fib(n-1) + fib(n-2); 
+    } 
+       
+    public static void main (String args[]) 
+    { 
+    int n = 9; 
+    System.out.println(fib(n)); 
+    } 
+} 
+
+public class CoreJavaConcepts implements test{
+
+	
+	@Override
+	public void testRun() {
+		System.out.println("inside implemented class");
+		
+	}
+	
 	public static void main(String[] args) {
 		
-		nextChild nc = new nextChild();
 		
-		nc.onlyMine();
+		TreeMap<Integer,Integer> tm = new TreeMap<Integer,Integer>();
 		
-		Parent p = new Child();
-		//Child c = (Child) new Parent();
-		Child c = new Child();
-		Parent p1 = null;
+		tm.put(1, 1);
+		tm.put(2, 2);
+		tm.put(4, 4);
+		tm.put(3, 3);
 		
-		p1.method3();  // prints the static method of Parent
-		//p1.method1();  //  null pointer exception
+		tm.put(5, 5);
 		
-		p.method1();  // prints child method1 
-		p.method3();  // prints static method of Parent  because declared type of p is Parent
-		//p.method2();  // can't do this as it is private method  
+		Iterator it = tm.navigableKeySet().iterator();
+		System.out.println(it.next());
 		
-		c.method1();   // prints child method1
-		c.method3();   // prints static method of Child because declared type of c is Child
+		CoreJavaConcepts core = new CoreJavaConcepts();
+		core.testDefault();
+		//test.testDefault();
+		
+//		nextChild nc = new nextChild();
+//		
+//		nc.onlyMine();
+//		
+//		Parent p = new Child();
+//		//Child c = (Child) new Parent();
+//		Child c = new Child();
+//		Parent p1 = null;
+//		
+//		p1.method3();  // prints the static method of Parent
+//		//p1.method1();  //  null pointer exception
+//		
+//		p.method1();  // prints child method1 
+//		p.method3();  // prints static method of Parent  because declared type of p is Parent
+//		//p.method2();  // can't do this as it is private method  
+//		
+//		c.method1();   // prints child method1
+//		c.method3();   // prints static method of Child because declared type of c is Child
 	}
+
+	@Override
+	public void homeTestRun() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

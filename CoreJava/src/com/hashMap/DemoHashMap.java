@@ -1,6 +1,7 @@
 package com.hashMap;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map.Entry;
 
 
@@ -55,6 +56,13 @@ class MyInt{
 public class DemoHashMap {
 
 	public static void main(String[] args) {
+		
+		Hashtable ht = new Hashtable();
+		
+		//ht.put(null, "null");
+		//ht.put("null", null);
+		
+		//System.out.println("hashtable: " + ht);
 		
 		HashMap<MyInt,String> hm = new HashMap<MyInt,String>();
 		

@@ -105,8 +105,20 @@ public class CoreJavaConcepts implements test{
 		
 	}
 	
+	static void sort(int[] arr){
+		arr[2]= 0;
+	}
+	
 	public static void main(String[] args) {
 		
+		
+		int[] arr = new int[]{5,2,1};
+		
+		System.out.println("array bfr: " +arr[2]);
+		
+		sort(arr);
+		
+		System.out.println("array aftr: " +arr[2]);
 		
 		TreeMap<Integer,Integer> tm = new TreeMap<Integer,Integer>();
 		

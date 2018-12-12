@@ -1,4 +1,4 @@
-package com.spring.SpringQuickStart;
+package com.spring.SpringQuickStart.basic;
 
 public interface SortingAlgo {
 	

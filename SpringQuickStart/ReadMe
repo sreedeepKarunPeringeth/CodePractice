@@ -1,0 +1,93 @@
+
+1. What are the beans ?
+2. What are the dependencies of a bean ?
+3. Where to search for a bean ? ??
+
+
+@SpringBootApplication
+
+
+ApplicationContext applicationContext = SpringApplication.run(class,args);
+applicationContext.getBean(CLASS);
+
+@Component
+@Autowired
+@Primary
+@Qualifier
+@Named
+@Inject
+@PreDestroy
+@PostConstruct
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE,proxyMode = ScopedProxyMode.TARGET_CLASS)
+
+Default scope - singleton
+
+GOF singleton means 1 instance per JVM
+Spring singleton means 1 instance per applicationContext
+
+
+ComponentScan
+
+
+-------------- removing spring boot -------------------
+
+@Configuration - to define an application Configuration
+@ComponentScan("package")
+
+AnnotationConfigApplicationContext
+
+
+----------xml configuration------------
+
+applicationContext.xml
+
+<context:component-scan base-package=""></context:component-scan>
+
+----------------
+
+if we define a package inside componentScan, then all classes inside that package's bean is created.
+This can be done either in applicationContext.xml or by annotations.
+
+----------------------------
+
+IOC Container - concept of autowiring the dependencies by Spring.
+ApplicationContext
+Bean Factory
+
+
+2 implementations of IOC container:
+
+1. Bean Factory
+2. Application Context ==> Bean Factory ++ ( Spring's AOP features, l18n capabilities, 
+							WebApplicationContext for web applications, etc.)
+
+99% of time application context is recommeded. 1% -> when memory is at premium
+
+
+
+
+
+
+COMPONENT ANNOTATIONS:
+
+@Component : General Component
+@Repository: Data layer
+@Service : Business Service Facade
+@Controller : Controller in MVC pattern
+
+
+------------Reading inputs from properties file------------------
+
+@PropertySource("classpath:app.properties")
+@Value("${external.service.url}")
+
+
+
+================ log4j===============
+
+TRACE
+DEBUG
+INFO
+WARN
+ERROR
